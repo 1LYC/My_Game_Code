@@ -13,7 +13,9 @@
  void DisplayBoard(char board[ROW][COL], int row, int col);//打印棋盘的函数
  void PlayerMove(char board[ROW][COL], int row, int col);//玩家下棋的函数
  void ComputerMove(char board[ROW][COL], int row, int col);//电脑下棋函数
- char IsWin(char board[ROW][COL], int row, int col);//判断游戏是否有输赢函数
+ char IsWin(char board[ROW][COL], int row, int col);//判断游戏是否有输赢函数e
+ void menu();
+ void game();
 
 //游戏会出现的四种情况
 //1. 玩家赢了 - *
