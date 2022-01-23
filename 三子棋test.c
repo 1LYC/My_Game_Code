@@ -1,6 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 
 #include "game.h"
-
 void menu()
 {
 	printf("******************************\n");
@@ -49,16 +47,17 @@ void game()
 	DisplayBoard(board, ROW, COL);
 }
 
-void DisplayBoard(char board[ROW][COL], int row, int col)//打印棋盘的函数
+void DisplayBoard(char (* const board)[COL], int row, int col)//打印棋盘的函数
 {
+	assert(board);
 	int i = 0;
 	for (i = 0; i < row; i++)
 	{
 		int j = 0;
-		for (j = 0; j < col; j++)
+		for (j = 0; j < col; j++)  
 		{
-			printf(" %c ", board[i][j]);
-			if(j<col-1)
+			printf(" %c ",*(*(board + i) + j));
+			if (j < col - 1)
 				printf("|");
 		}
 		printf("\n");
@@ -68,21 +67,20 @@ void DisplayBoard(char board[ROW][COL], int row, int col)//打印棋盘的函数
 			for (j = 0; j < col; j++)
 			{
 				printf("---");
-				if(j<col-1)
+				if (j < col - 1)
 					printf("|");
 			}
-		printf("\n");
+			printf("\n");
 		}
 	}
 }
 
-void PlayerMove(char board[][COL], int row, int col)//玩家下棋的函数
+void PlayerMove(char(* const board)[COL], int row, int col)//玩家下棋的函数
 {
+	assert(board);
 	int x = 0;
 	int y = 0;
-
 	printf("玩家走:>\n");
-
 	while (1)
 	{
 		printf("请输入下棋的坐标:>");
@@ -107,10 +105,10 @@ void PlayerMove(char board[][COL], int row, int col)//玩家下棋的函数
 	}
 }
 
-void ComputerMove(char board[ROW][COL], int row, int col)//电脑下棋
+void ComputerMove(char(* const board)[COL], int row, int col)//电脑下棋
 {
+	assert(board);
 	printf("电脑走:>\n");
-
 	while (1)
 	{
 		int x = rand() % row;//当row为3时，范围在0到2，这样不用判断坐标是否合法
@@ -124,8 +122,9 @@ void ComputerMove(char board[ROW][COL], int row, int col)//电脑下棋
 	}
 }
 
-int IsFull(char board[ROW][COL], int row, int col)//判断棋盘是否满了
+int IsFull(char(* const board)[COL], int row, int col)//判断棋盘是否满了
 {
+	assert(board);
 	int i = 0;
 	int j = 0;
 	for (i = 0; i < row; i++)
@@ -141,33 +140,42 @@ int IsFull(char board[ROW][COL], int row, int col)//判断棋盘是否满了
 	return 1;//棋盘满了
 }
 
-char IsWin(char board[ROW][COL], int row, int col)//判断游戏是否有输赢函数
+char IsWin(char(* const board)[COL], int row, int col)//判断游戏是否有输赢函数
 {
+	assert(board);
 	int i = 0;
 	//判断三行
 	for (i = 0; i < row; i++)
 	{
-		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] != ' ')
+		if (board[i][0] == board[i][1] \
+			&& board[i][1] == board[i][2]\
+			&& board[i][1] != ' ')
 		{
 			return  board[i][0];//能返回#或*（随便在一行中观察）
 		}
 	}
-	
+
 	//判断三列
 	for (i = 0; i < col; i++)
 	{
-		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[1][i] != ' ')
+		if (board[0][i] == board[1][i]\
+			&& board[1][i] == board[2][i] \
+			&& board[1][i] != ' ')
 		{
 			return board[0][i];//能返回#或*（随便在一列中观察）
 		}
 	}
 
 	//判断对角线
-	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[1][1] != ' ')
+	if (board[0][0] == board[1][1] \
+		&& board[1][1] == board[2][2]\
+		&& board[1][1] != ' ')
 	{
 		return board[1][1];
 	}
-	if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[1][1] != ' ')
+	if (board[0][2] == board[1][1] \
+		&& board[1][1] == board[2][0]\
+		&& board[1][1] != ' ')
 	{
 		return board[1][1];
 	}
