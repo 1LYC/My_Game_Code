@@ -1,11 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS 1
 #pragma once
-
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include <string.h>
 
 #define EASY_COUNT 10
 
@@ -15,15 +14,11 @@
 #define ROWS ROW+2
 #define COLS COL+2
 
-
-//³õÊ¼»¯ÆåÅÌµÄ
-void InitBoard(char board[ROWS][COLS], int rows, int cols, char set);
-
-//´òÓ¡ÆåÅÌ
+//æ‰“å°æ£‹ç›˜
 void DisplayBoard(char board[ROWS][COLS], int row, int col);
 
-//²¼ÖÃÀ×
+//å¸ƒç½®é›·
 void SetMine(char mine[ROWS][COLS], int row, int col);
 
-//ÅÅ²éÀ×
+//æ’æŸ¥é›·
 void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);
