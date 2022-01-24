@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-
 #include "game.h"
 
 void menu()
@@ -12,20 +10,20 @@ void menu()
 
 void game()
 {
-	char mine[ROWS][COLS] = { 0 };//´æ·Å²¼ÖÃºÃµÄÀ×µÄĞÅÏ¢
-	char show[ROWS][COLS] = { 0 };//´æ·ÅÅÅ²é³öµÄÀ×µÄĞÅÏ¢
-	//³õÊ¼»¯ÆåÅÌ(Èç¹û²»³õÊ¼»¯Ôò»á³öÏÖËæ»úÖµ£©
-	InitBoard(mine, ROWS, COLS, '0');//'0'
-	InitBoard(show, ROWS, COLS, '*');//'*'
+	char mine[ROWS][COLS] = { 0 };//å­˜æ”¾å¸ƒç½®å¥½çš„é›·çš„ä¿¡æ¯
+	char show[ROWS][COLS] = { 0 };//å­˜æ”¾æ’æŸ¥å‡ºçš„é›·çš„ä¿¡æ¯
+	//åˆå§‹åŒ–æ£‹ç›˜
+	memset(mine, '0', sizeof(mine));//'0'
+	memset(show, '*', sizeof(show));//'*'
 
-	//´òÓ¡Ò»ÏÂÆåÅÌ
+	//æ‰“å°ä¸€ä¸‹æ£‹ç›˜
 	DisplayBoard(show, ROW, COL);
 
-	//²¼ÖÃÀ×
+	//å¸ƒç½®é›·
 	SetMine(mine, ROW, COL);
 	//DisplayBoard(mine, ROW, COL);
 
-	//ÅÅ²éÀ×
+	//æ’æŸ¥é›·
 	FindMine(mine, show, ROW, COL);
 }
 
@@ -37,24 +35,25 @@ int main()
 	do
 	{
 		menu();
-		printf("ÇëÑ¡Ôñ:>");
+		printf("è¯·é€‰æ‹©:>");
 		scanf("%d", &input);
 		switch (input)
 		{
 		case 1:
-			game();//É¨À×ÓÎÏ·
+			game();//æ‰«é›·æ¸¸æˆ
 			break;
 		case 0:
-			printf("ÍË³öÓÎÏ·\n");
+			printf("é€€å‡ºæ¸¸æˆ\n");
 			break;
 		default:
-			printf("Ñ¡Ôñ´íÎó£¬ÖØĞÂÑ¡Ôñ\n");
+			printf("é€‰æ‹©é”™è¯¯ï¼Œé‡æ–°é€‰æ‹©\n");
 			break;
 		}
 	} while (input);
 
 	return 0;
 }
-//¿ÉÒÔÓÅ»¯µÄ
-//1. Èç¹û²»ÊÇÀ×£¬ÖÜÎ§Ã»ÓĞÀ× - Õ¹¿ªÒ»Æ¬ - µİ¹é
-//2. ±ê¼ÇÀ×
+
+//å¯ä»¥ä¼˜åŒ–çš„
+//1. å¦‚æœä¸æ˜¯é›·ï¼Œå‘¨å›´æ²¡æœ‰é›· - å±•å¼€ä¸€ç‰‡ - é€’å½’
+//2. æ ‡è®°é›·
