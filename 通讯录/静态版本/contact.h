@@ -45,3 +45,7 @@ void ModifyContact(Contact* pc);
 
 //打印联系人信息
 void PrintContact(const Contact* pc);
+
+//排序联系人的信息
+void SortContact(Contact* pc);    
+
