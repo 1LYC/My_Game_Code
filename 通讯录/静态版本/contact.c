@@ -153,3 +153,27 @@ void ModifyContact(Contact* pc)
 		printf("修改成功\n");
 	}
 }
+
+
+void SortContact(Contact* pc)
+{
+	int a = 0;
+	char name[MAX_NAME] = { 0 };
+	printf("请输入要排序人的名字:>");
+	scanf("%s", name);
+	int pos = FindByName(pc, name);
+	if (pos == -1)
+	{
+		printf("要排序的人不存在\n");
+		return;
+	}
+	printf("你需要把他移动到第几个：");
+	scanf("%d", &a);
+	//交换
+	PeoInfo tmp;
+	memset(&tmp, 0, sizeof(PeoInfo));
+	memcpy(&tmp, &(pc->data[pos]), sizeof(PeoInfo));
+	memcpy(&(pc->data[pos]), &(pc->data[a - 1]), sizeof(PeoInfo));
+	memcpy(&(pc->data[a - 1]), &tmp, sizeof(PeoInfo));
+	printf("移动成功\n");
+}
