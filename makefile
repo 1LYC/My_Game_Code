@@ -1,5 +1,5 @@
-mybin:test.c
-		@gcc $^ -o $@
+mybin:test.c main.c
+		@gcc $^ -o $@ -g
 
 .PHONY:clean
 clean:
