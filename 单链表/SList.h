@@ -10,24 +10,24 @@ typedef struct SListNode
 	struct SListNode* next;
 }SLTNode;
 
-// ²»»á¸Ä±äÁ´±íµÄÍ·Ö¸Õë£¬´«Ò»¼¶Ö¸Õë
+// ä¸ä¼šæ”¹å˜é“¾è¡¨çš„å¤´æŒ‡é’ˆï¼Œä¼ ä¸€çº§æŒ‡é’ˆ
 void SListPrint(SLTNode* phead);
 
-// ¿ÉÄÜ»á¸Ä±äÁ´±íµÄÍ·Ö¸Õë£¬´«¶ş¼¶Ö¸Õë
-void SListPushBack(SLTNode** pphead, SLTDataType x);
+// å¯èƒ½ä¼šæ”¹å˜é“¾è¡¨çš„å¤´æŒ‡é’ˆï¼Œä¼ äºŒçº§æŒ‡é’ˆ
+void SListPushBack(SLTNode** pphead, SLTDataType x);//å¯ä»¥ä¸ä¼ äºŒçº§
 void SListPushFront(SLTNode** pphead, SLTDataType x);
-void SListPopBack(SLTNode** pphead);
+void SListPopBack(SLTNode** pphead);//å¯ä»¥ä¸ä¼ äºŒçº§
 void SListPopFront(SLTNode** pphead);
 
-// ÔÚposµÄÇ°Ãæ²åÈëx
+// åœ¨posçš„å‰é¢æ’å…¥x
 void SListInsert(SLTNode** phead, SLTNode* pos, SLTDataType x);
-// É¾³ıposÎ»ÖÃµÄÖµ
+// åˆ é™¤posä½ç½®çš„å€¼
 void SListErase(SLTNode** pphead, SLTNode* pos);
 
 SLTNode* SListFind(SLTNode* phead, SLTDataType x);
 
-// ÓĞĞ©µØ·½Ò²ÓĞÕâÑùµÄ
-//// ÔÚposµÄÇ°Ãæ²åÈëx
+// æœ‰äº›åœ°æ–¹ä¹Ÿæœ‰è¿™æ ·çš„
+//// åœ¨posçš„å‰é¢æ’å…¥x
 //void SListInsert(SLTNode** phead, int i, SLTDataType x);
-//// É¾³ıposÎ»ÖÃµÄÖµ
+//// åˆ é™¤posä½ç½®çš„å€¼
 //void SListErase(SLTNode** phead, int i);
