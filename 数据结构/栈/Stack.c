@@ -32,7 +32,7 @@ void StackPop(Stack* ps)
 {
 	assert(ps);
 	assert(ps->top);
-	printf("%d ", ps->a[ps->top - 1]);
+	//printf("%d ", ps->a[ps->top - 1]);
 	ps->top--;
 }
 
