@@ -8,7 +8,7 @@ void Test1(Stack* ps)
 	StackPush(ps, 4);
 	StackPush(ps, 5);
 	printf("%d\n", StackSize(ps));
-	while (StackEmpty(ps))
+	while (!StackEmpty(ps))
 	{
 		StackPop(ps);
 	}

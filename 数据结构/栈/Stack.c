@@ -7,7 +7,7 @@ void StackInit(Stack* ps)
 	if (ps->a == NULL) {
 		return;
 	}
-	ps->top = 0;//ջ��Ϊ0
+	ps->top = 0;//Õ»¶¥Îª0
 	ps->capacity = 4;
 }
 
@@ -16,7 +16,7 @@ void StackPush(Stack* ps, STDataType x)
 	assert(ps);
 	if (ps->top == ps->capacity)
 	{
-		//����
+		//À©ÈÝ
 		STDataType* new = (STDataType*)realloc(ps->a, ps->capacity * 2 * sizeof(STDataType));
 		if (new == NULL) {
 			return;
@@ -32,7 +32,7 @@ void StackPop(Stack* ps)
 {
 	assert(ps);
 	assert(ps->top);
-	printf("%d ", ps->a[ps->top - 1]);
+	//printf("%d ", ps->a[ps->top - 1]);
 	ps->top--;
 }
 
@@ -52,7 +52,7 @@ int StackSize(Stack* ps)
 bool StackEmpty(Stack* ps)
 {
 	assert(ps);
-	return ps->top;
+	return ps->top == 0;
 }
 
 void StackDestory(Stack* ps)
