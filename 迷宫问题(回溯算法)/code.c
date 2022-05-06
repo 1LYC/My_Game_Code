@@ -188,7 +188,7 @@ int main()
 	int i = 0;
 	for (i = 0; i < M; i++)
 	{
-		arr[i] = malloc(sizeof(int) * N);
+		arr[i] = (int*)malloc(sizeof(int) * N);
 		if (arr == NULL) {
 			printf("malloc fail!\n");
 			exit(-1);
