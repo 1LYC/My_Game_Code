@@ -51,7 +51,7 @@ int main()
 			ModifyContact(&con);
 			break;
 		case SORT:
-			//自己完善
+			// 待完善
 			break;
 		case PRINT:
 			PrintContact(&con);
