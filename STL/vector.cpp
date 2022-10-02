@@ -2,7 +2,7 @@
 #include <assert.h> 
 #include <iostream>
 using namespace std;
-
+#include "reverse_iterator.h"
 namespace bit
 {
 	template<class T>
@@ -11,6 +11,10 @@ namespace bit
 	public:
 		typedef T* iterator;
 		typedef const T* const_iterator;
+
+		typedef __reverse_iterator<iterator, T&, T*> reverse_iterator;
+		typedef __reverse_iterator<const_iterator, const T&, const T*> const_reverse_iterator;
+		
 		// ---------迭代器实现---------
 		iterator begin()
 		{
@@ -29,6 +33,18 @@ namespace bit
 			return _finish;
 		}
 		// ---------迭代器实现---------
+
+		// ---------反向迭代器实现---------
+		reverse_iterator rbegin()
+		{
+			return reverse_iterator(end());
+		}
+
+		reverse_iterator rend()
+		{
+			return reverse_iterator(begin());
+		}
+		// ---------反向迭代器实现---------
 
 		// -------构造函数实现---------
 		vector()
